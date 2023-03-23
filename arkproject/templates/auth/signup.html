@@ -1,0 +1,49 @@
+{% extends 'nav.html' %}
+
+{% block title %}
+AMMIKS
+{% endblock title %}
+{% block body %} 
+<section id="contact" class="contact">
+    <div class="container">
+
+      <div class="section-title" data-aos="fade-up">
+<br><br><br><br><br>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-4">
+
+        <div class="container" data-aos="fade-up" data-aos-delay="400">  
+            
+            {% for message in messages %}
+            <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                <strong></strong>{{message}}.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>  
+            {% endfor %}
+            <h1 data-aos="fade-up">SignUp</h1>  <hr> 
+            <form action="/arkauth/signup/" method="post"> {% csrf_token %}                                             
+                <div class="inputfield">
+                    <input type="email" placeholder="Enter Your Email" class="form-control rounded-pill shadow-none p-2" id="email" name="email" required>
+                </div>  <br>
+                <div class="inputfield">
+                    <input type="password" placeholder="Enter Your Password" class="form-control rounded-pill shadow-none p-2" id="pass1" name="pass1" required>
+                </div> <br>
+                <div class="inputfield">
+                    <input type="password" placeholder="Comfirm your Password" class="form-control rounded-pill shadow-none p-2" id="pass2" name="pass2" required>
+                </div> <br>         
+                <div class="inputfield">
+                  <button type="submit" class="btn btn-danger w-50 rounded-pill p-2">SignUp</button> <span>&nbsp; &nbsp; &nbsp;already user?<a href="/arkauth/login/">Login</a> </span>
+                </div>
+                       
+            </form>
+        </div>
+
+
+    </div>
+    <div class="col-md-6"></div>
+</div>
+</div>
+</div>
+</section>
+{% endblock body %}

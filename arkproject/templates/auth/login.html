@@ -1,0 +1,52 @@
+{% extends 'nav.html' %}
+
+{% block title %}
+Shop Hub
+{% endblock title %}
+{% block body %} 
+<section id="contact" class="contact">
+    <div class="container">
+
+      <div class="section-title" data-aos="fade-up">
+<br><br><br><br><br>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-4">
+
+        <div class="container" data-aos="fade-up" data-aos-delay="400">   
+            {% for message in messages %}
+            <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                <strong></strong>{{message}}.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>          
+            {% endfor %}      
+            <div class="form"> 
+                <h1 data-aos="fade-up">Login</h1>  
+                <form action="/arkauth/login/" method="post">{% csrf_token %}                  
+                    <div class="inputfield">
+                        <br>
+                        <input type="email" placeholder="Enter Your Email" class="form-control rounded-pill shadow-none p-2" id="email" name="email" required>
+                    </div>  
+                    <div class="inputfield">
+                        <br>
+                        <input type="password" placeholder="Enter Your Password" class="form-control rounded-pill shadow-none p-2" id="pass1" name="pass1" required>
+                    </div>  <br>          
+                    <div class="inputfield">
+                    <button type="submit" class="btn btn-danger w-50 rounded-pill p-2">Login</button>
+                    </div><br>
+                    <span>Not already user? <a href="/arkauth/signup/">Signup</a><br></span>  
+                    <span>forgot password? <a href="/arkauth/request-reset-email/">Reset</a></span> 
+                </form> 
+
+
+            </div>
+        </div>
+
+
+    </div>
+    <div class="col-md-6"></div>
+    </div>
+    </div>
+</div>
+</section>
+{% endblock body %}

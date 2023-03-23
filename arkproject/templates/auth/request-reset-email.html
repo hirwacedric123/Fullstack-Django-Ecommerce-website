@@ -1,0 +1,48 @@
+{% extends 'nav.html' %}
+
+{% block title %}
+Shop Hub Reset Passowrd
+{% endblock title %}
+{% block body %} 
+<section id="contact" class="contact">
+    <div class="container">
+
+      <div class="section-title" data-aos="fade-up">
+<br><br><br><br><br>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-4">
+
+        <div class="container" data-aos="fade-up" data-aos-delay="400">   
+            {% for message in messages %}
+            <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                <strong></strong>{{message}}.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>          
+            {% endfor %}      
+            <div class="form"> 
+                <h1 data-aos="fade-up">request a Passowrd Reset Link</h1>  
+                <form action="/arkauth/request-reset-email/" method="post">{% csrf_token %}                  
+                    <div class="inputfield">
+                        <label for="">Email:</label>
+                        <input type="email" placeholder="Enter Your Email" class="form-control rounded-pill shadow-none p-2" id="email" name="email" required>
+                    </div>  <br>         
+                    <div class="inputfield">
+                    <button type="submit" class="btn btn-danger w-50 rounded-pill p-2">Submit</button>
+                    </div><br>
+                    <span> <a href="/arkauth/login/">Go Back</a><br></span>  
+                    
+                </form> 
+
+
+            </div>
+        </div>
+
+
+    </div>
+    <div class="col-md-6"></div>
+</div>
+</div>
+</div>
+</section>
+{% endblock body %}
